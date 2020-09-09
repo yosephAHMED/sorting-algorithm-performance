@@ -79,25 +79,40 @@ void mergeSort(vector<int> &arr, int begin, int end)
     }
 }
 
-int main() {
+void generateSortedInput(vector<int> &arr, int n) 
+{
+    for (int i = n; i > 0; i--) {
+        arr.push_back(i);
+    }
+}
+
+void printVector(vector<int>& arr)
+{
+    for (int i = 0; i < arr.size(); i++) {
+        cout << arr[i];
+        if (i < arr.size() - 1)
+            cout << ", ";
+    }
+}
+
+int main() 
+{
     /*
     testing algorithms to ensure they are sorting properly
     */
+
+    cout << "Testing Insertion Sort and Merge Sort Algorithms to Ensure They Are Working Properly" << endl;
+
     vector<int> testVecArr = { 5, 4, 3, 2 , 1 };
 
-    cout << endl << "-------- insertion sort --------" << endl;
+    cout << "-------- insertion sort --------" << endl;
     cout << "input before: ";
-    for (int i = 0; i < testVecArr.size(); i++) {
-        cout << testVecArr[i];
-        if (i < testVecArr.size() - 1) std::cout << ", ";
-    }
+    printVector(testVecArr); 
     cout << endl;
+
     insertionSort(testVecArr);
     cout << "input after: ";
-    for (int i = 0; i < testVecArr.size(); i++) {
-        cout << testVecArr[i];
-        if (i < testVecArr.size() - 1) std::cout << ", ";
-    }
+    printVector(testVecArr);
     cout << endl << "--------------------------------" << endl;
 
     // clear the vector to remove all elements
@@ -107,18 +122,12 @@ int main() {
 
     cout << endl << "---------- merge sort ----------" << endl;
     cout << "input before: ";
-    for (int i = 0; i < testVecArr.size(); i++) {
-        cout << testVecArr[i];
-        if (i < testVecArr.size() - 1) std::cout << ", ";
-    }
+    printVector(testVecArr);
     cout << endl;
+
     mergeSort(testVecArr, 0, static_cast<int>(testVecArr.size() - 1));
     cout << "input after: ";
-    for (int i = 0; i < testVecArr.size(); i++) {
-        cout << testVecArr[i];
-        if (i < testVecArr.size() - 1)
-            cout << ", ";
-    }
+    printVector(testVecArr);
     cout << endl << "--------------------------------" << endl;
 
     // free the memory taken by vector object
@@ -128,6 +137,10 @@ int main() {
     /*
     end of test
     */
+
+    vector<int> vecArr = {};
+    generateSortedInput(vecArr, 100);
+    printVector(vecArr);
 
     system("pause");
     return 0;
