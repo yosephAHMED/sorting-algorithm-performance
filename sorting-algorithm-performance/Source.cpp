@@ -86,24 +86,40 @@ int main() {
     vector<int> testVecArr = { 5, 4, 3, 2 , 1 };
 
     cout << endl << "-------- insertion sort --------" << endl;
-    insertionSort(testVecArr);
+    cout << "input before: ";
     for (int i = 0; i < testVecArr.size(); i++) {
         cout << testVecArr[i];
         if (i < testVecArr.size() - 1) std::cout << ", ";
     }
+    cout << endl;
+    insertionSort(testVecArr);
+    cout << "input after: ";
+    for (int i = 0; i < testVecArr.size(); i++) {
+        cout << testVecArr[i];
+        if (i < testVecArr.size() - 1) std::cout << ", ";
+    }
+    cout << endl << "--------------------------------" << endl;
 
     // clear the vector to remove all elements
     testVecArr.clear();
+
     testVecArr = { 12, 11, 15, 10, 9, 1, 2, 3, 13, 14, 4, 5, 6, 7, 8 };
 
-    cout << endl << "-------- merge sort --------" << endl;
+    cout << endl << "---------- merge sort ----------" << endl;
+    cout << "input before: ";
+    for (int i = 0; i < testVecArr.size(); i++) {
+        cout << testVecArr[i];
+        if (i < testVecArr.size() - 1) std::cout << ", ";
+    }
+    cout << endl;
     mergeSort(testVecArr, 0, static_cast<int>(testVecArr.size() - 1));
+    cout << "input after: ";
     for (int i = 0; i < testVecArr.size(); i++) {
         cout << testVecArr[i];
         if (i < testVecArr.size() - 1)
             cout << ", ";
     }
-    cout << endl;
+    cout << endl << "--------------------------------" << endl;
 
     // free the memory taken by vector object
     // swap the vector with an empty vector to deallocate memory
