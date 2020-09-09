@@ -1,10 +1,6 @@
 #include <iostream>
+#include <vector>
 using namespace std;
-
-int main() {
-	system("pause");
-	return 0;
-}
 
 void insertionSort(int arr[], int n)
 {
@@ -23,56 +19,81 @@ void insertionSort(int arr[], int n)
     }
 }
 
-void merge(int arr[], int begin, int mid, int end)
+void merge(vector<int> &arr, int begin, int mid, int end)
 {
-    int* temp = new int[end - begin + 1];
-    int i = begin, j = mid + 1, k = 0;
-    while (i <= mid && j <= end)
-    {
-        if (arr[i] <= arr[j])
-        {
-            temp[k] = arr[i];
-            i++;
-            k++;
+    vector<int> leftArray(mid - begin + 1);
+    vector<int> rightArray(end - mid);
+
+    // fill in left array
+    for (int i = 0; i < leftArray.size(); ++i)
+        leftArray[i] = arr[begin + i];
+
+    // fill in right array
+    for (int i = 0; i < rightArray.size(); ++i)
+        rightArray[i] = arr[mid + 1 + i];
+
+    /* Merge the temp arrays */
+
+    // initial indexes of first and second subarrays
+    int leftIndex = 0, rightIndex = 0;
+
+    // the index we will start at when adding the subarrays back into the main array
+    int currentIndex = begin;
+
+    // compare each index of the subarrays adding the lowest value to the currentIndex
+    while (leftIndex < leftArray.size() && rightIndex < rightArray.size()) {
+        if (leftArray[leftIndex] <= rightArray[rightIndex]) {
+            arr[currentIndex] = leftArray[leftIndex];
+            leftIndex++;
         }
-        else
-        {
-            temp[k] = arr[j];
-            j++;
-            k++;
+        else {
+            arr[currentIndex] = rightArray[rightIndex];
+            rightIndex++;
         }
+        currentIndex++;
     }
-    while (i <= mid)
-    {
-        temp[k] = arr[i];
-        i++;
-        k++;
-    }
-    while (j <= end)
-    {
-        temp[k] = arr[j];
-        j++;
-        k++;
-    }
-    k = 0;
-    for (i = begin; i <= end; i++)
-    {
-        arr[i] = temp[k];
-        i++;
-        k++;
-    }
-    delete[] temp;
+
+    // copy remaining elements of leftArray[] if any
+    while (leftIndex < leftArray.size()) arr[currentIndex++] = leftArray[leftIndex++];
+
+    // copy remaining elements of rightArray[] if any
+    while (rightIndex < rightArray.size()) arr[currentIndex++] = rightArray[rightIndex++];
 }
 
-void mergeSort(int arr[], int begin, int end)
+void mergeSort(vector<int> &arr, int begin, int end)
 {
-    int mid;
-    if (begin > end)
-    {
-        // avoids overflow for large begin and end
-        mid = begin + (end - 1) / 2;
-        mergeSort(arr, begin, mid);
-        mergeSort(arr, mid + 1, end);
+    // base case
+    if (begin < end) {
+        // find the middle point
+        int mid = (begin + end) / 2;
+
+        mergeSort(arr, begin, mid); // sort first half
+        mergeSort(arr, mid + 1, end);  // sort second half
+
+        // merge the sorted halves
         merge(arr, begin, mid, end);
     }
+}
+
+int main() {
+    int testArr[] = { 5, 4, 3, 2, 1 };
+    vector<int> vecArr = { 12, 11, 15, 10, 9, 1, 2, 3, 13, 14, 4, 5, 6, 7, 8 };
+
+    cout << endl << "-------- insertion sort --------" << endl;
+    insertionSort(testArr, 5);
+    for (int i = 0; i < 5; i++)
+        cout << "testArr[" << i << "]: " << testArr[i] << endl;
+
+    cout << endl << "-------- merge sort --------" << endl;
+    mergeSort(vecArr, 0, static_cast<int>(vecArr.size() - 1));
+    for (int i = 0; i < vecArr.size(); i++) {
+        cout << vecArr[i];
+        if (i < vecArr.size() - 1) 
+            cout << ", ";
+    }
+
+    cout << endl;
+
+    system("pause");
+    return 0;
 }
