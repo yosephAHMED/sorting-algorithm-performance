@@ -2,20 +2,24 @@
 #include <vector>
 using namespace std;
 
-void insertionSort(int arr[], int n)
+void insertionSort(vector<int> &arr)
 {
-    int key;
-    int j;
-    for (int i = 1; i < n; i++)
-    {
-        key = arr[i];
-        j = i - 1;
-        while (j >= 0 && key < arr[j])
-        {
-            arr[j + 1] = arr[j];
-            j--;
+    // start at the first index and iterate through to the end
+    for (int i = 1; i < arr.size(); i++) {
+        int currentIndex = i;
+        /*
+         * Check:
+         *      1. that currentIndex is at least 1
+         *      2. that the item directly before the currentIndex is greater than the item at currentIndex
+         *
+         * If both conditions are met, swap the indexes
+         */
+        while (currentIndex > 0 && arr[currentIndex - 1] > arr[currentIndex]) {
+            int temp = arr[currentIndex];
+            arr[currentIndex] = arr[currentIndex - 1];
+            arr[currentIndex - 1] = temp;
+            currentIndex--;
         }
-        arr[j + 1] = key;
     }
 }
 
@@ -76,23 +80,38 @@ void mergeSort(vector<int> &arr, int begin, int end)
 }
 
 int main() {
-    int testArr[] = { 5, 4, 3, 2, 1 };
-    vector<int> vecArr = { 12, 11, 15, 10, 9, 1, 2, 3, 13, 14, 4, 5, 6, 7, 8 };
+    /*
+    testing algorithms to ensure they are sorting properly
+    */
+    vector<int> testVecArr = { 5, 4, 3, 2 , 1 };
 
     cout << endl << "-------- insertion sort --------" << endl;
-    insertionSort(testArr, 5);
-    for (int i = 0; i < 5; i++)
-        cout << "testArr[" << i << "]: " << testArr[i] << endl;
-
-    cout << endl << "-------- merge sort --------" << endl;
-    mergeSort(vecArr, 0, static_cast<int>(vecArr.size() - 1));
-    for (int i = 0; i < vecArr.size(); i++) {
-        cout << vecArr[i];
-        if (i < vecArr.size() - 1) 
-            cout << ", ";
+    insertionSort(testVecArr);
+    for (int i = 0; i < testVecArr.size(); i++) {
+        cout << testVecArr[i];
+        if (i < testVecArr.size() - 1) std::cout << ", ";
     }
 
+    // clear the vector to remove all elements
+    testVecArr.clear();
+    testVecArr = { 12, 11, 15, 10, 9, 1, 2, 3, 13, 14, 4, 5, 6, 7, 8 };
+
+    cout << endl << "-------- merge sort --------" << endl;
+    mergeSort(testVecArr, 0, static_cast<int>(testVecArr.size() - 1));
+    for (int i = 0; i < testVecArr.size(); i++) {
+        cout << testVecArr[i];
+        if (i < testVecArr.size() - 1)
+            cout << ", ";
+    }
     cout << endl;
+
+    // free the memory taken by vector object
+    // swap the vector with an empty vector to deallocate memory
+    vector<int>().swap(testVecArr);
+
+    /*
+    end of test
+    */
 
     system("pause");
     return 0;
