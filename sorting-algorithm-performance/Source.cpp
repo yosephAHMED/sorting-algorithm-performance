@@ -54,7 +54,8 @@ void merge(int arr[], int begin, int mid, int end)
         j++;
         k++;
     }
-    for (i = begin; k = 0; i <= end)
+    k = 0;
+    for (i = begin; i <= end; i++)
     {
         arr[i] = temp[k];
         i++;
