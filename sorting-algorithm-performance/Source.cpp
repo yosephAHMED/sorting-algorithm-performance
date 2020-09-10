@@ -1,6 +1,16 @@
 #include <iostream>
 #include <vector>
+#include <chrono>
 using namespace std;
+
+void printVector(vector<int>& arr)
+{
+    for (int i = 0; i < arr.size(); i++) {
+        cout << arr[i];
+        if (i < arr.size() - 1)
+            cout << ", ";
+    }
+}
 
 void insertionSort(vector<int> &arr)
 {
@@ -79,48 +89,30 @@ void mergeSort(vector<int> &arr, int begin, int end)
     }
 }
 
-void generateSortedInput(vector<int> &arr, int n) 
-{
-    for (int i = n; i > 0; i--) {
-        arr.push_back(i);
-    }
-}
-
-void printVector(vector<int>& arr)
-{
-    for (int i = 0; i < arr.size(); i++) {
-        cout << arr[i];
-        if (i < arr.size() - 1)
-            cout << ", ";
-    }
-}
-
-int main() 
+void testSortingAlgorithms() 
 {
     /*
     testing algorithms to ensure they are sorting properly
     */
 
-    cout << "Testing Insertion Sort and Merge Sort Algorithms to Ensure They Are Working Properly" << endl;
+    vector<int> testVecArr = { 5, 4, 3, 2, 1 };
 
-    vector<int> testVecArr = { 5, 4, 3, 2 , 1 };
-
-    cout << "-------- insertion sort --------" << endl;
+    cout << "Testing Sorting Algorithms to Ensure They Are Working Properly" << endl;
+    cout << "------------ insertion sort ------------" << endl;
     cout << "input before: ";
-    printVector(testVecArr); 
+    printVector(testVecArr);
     cout << endl;
 
     insertionSort(testVecArr);
     cout << "input after: ";
     printVector(testVecArr);
-    cout << endl << "--------------------------------" << endl;
 
     // clear the vector to remove all elements
     testVecArr.clear();
 
     testVecArr = { 12, 11, 15, 10, 9, 1, 2, 3, 13, 14, 4, 5, 6, 7, 8 };
 
-    cout << endl << "---------- merge sort ----------" << endl;
+    cout << endl << "------------ merge sort ---------------" << endl;
     cout << "input before: ";
     printVector(testVecArr);
     cout << endl;
@@ -128,7 +120,7 @@ int main()
     mergeSort(testVecArr, 0, static_cast<int>(testVecArr.size() - 1));
     cout << "input after: ";
     printVector(testVecArr);
-    cout << endl << "--------------------------------" << endl;
+    cout << endl << "---------------------------------------" << endl;
 
     // free the memory taken by vector object
     // swap the vector with an empty vector to deallocate memory
@@ -137,10 +129,49 @@ int main()
     /*
     end of test
     */
+}
 
+void generateSortedInput(vector<int> &arr, int n) 
+{
+    for (int i = n; i > 0; i--) {
+        arr.push_back(i);
+    }
+}
+
+int main() 
+{
+    // test sorting algorithms working correctly
+    testSortingAlgorithms();
+
+    // the main vector we will be using in sorting computations
     vector<int> vecArr = {};
-    generateSortedInput(vecArr, 100);
-    printVector(vecArr);
+
+    // a vector to store the number of inputs (n)
+    vector<int> inputArr = { 100, 200, 300, 400, 500, 1000, 4000, 10000 };
+
+    // variables to determine running time of algorithms
+    using namespace std::chrono;
+    high_resolution_clock::time_point t1, t2;
+    chrono::duration<double, milli> runningTime;
+    
+
+    for (int i = 0; i < inputArr.size(); i++) {
+        // for each n, obtain inputs for the vecArr
+        generateSortedInput(vecArr, inputArr[i]);
+
+        // run insertion sort on vecArr and obtain running time
+        t1 = high_resolution_clock::now();
+        insertionSort(vecArr);
+        t2 = high_resolution_clock::now();
+        runningTime = t2 - t1;
+        cout << "Insertion time: " << runningTime.count() << endl;
+
+        // after one algorithm runs, the vector needs to be initialized
+        vecArr.clear();
+        generateSortedInput(vecArr, inputArr[i]);
+
+        // run merge sort on vecArr and obtain running time
+    }
 
     system("pause");
     return 0;
