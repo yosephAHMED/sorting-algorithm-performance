@@ -147,7 +147,8 @@ int main()
     vector<int> vecArr = {};
 
     // a vector to store the number of inputs (n)
-    vector<int> inputArr = { 100, 200, 300, 400, 500, 1000, 4000, 10000 };
+    vector<int> inputArr = { 100 };
+    // vector<int> inputArr = { 100, 200, 300, 400, 500, 1000, 4000, 10000 };
 
     // variables to determine running time of algorithms
     using namespace std::chrono;
@@ -164,13 +165,18 @@ int main()
         insertionSort(vecArr);
         t2 = high_resolution_clock::now();
         runningTime = t2 - t1;
-        cout << "Insertion time: " << runningTime.count() << endl;
+        cout << "Insertion sort time: " << runningTime.count() << endl;
 
         // after one algorithm runs, the vector needs to be initialized
         vecArr.clear();
         generateSortedInput(vecArr, inputArr[i]);
 
         // run merge sort on vecArr and obtain running time
+        t1 = high_resolution_clock::now();
+        mergeSort(vecArr, 0, static_cast<int>(vecArr.size() - 1));
+        t2 = high_resolution_clock::now();
+        runningTime = t2 - t1;
+        cout << "Merge sort time: " << runningTime.count() << endl;
     }
 
     system("pause");
