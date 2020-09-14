@@ -1,6 +1,10 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <chrono>
+#include <algorithm>
+#include <ctime>
+#include <cstdlib>
 using namespace std;
 
 void printVector(vector<int>& arr)
@@ -133,13 +137,35 @@ void testSortingAlgorithms()
 
 void generateSortedInput(vector<int> &arr, int n) 
 {
+    // n, n-1, ..., 3, 2, 1
     for (int i = n; i > 0; i--) {
         arr.push_back(i);
     }
 }
 
+void generateReverselySortedInput(vector<int>& arr, int n)
+{
+    // 1, 2, 3, ..., n
+    for (int i = 0; i < n; i++) {
+        arr.push_back(i + 1);
+    }
+}
+
+void generateRandomPermutation(vector<int>& arr, int n)
+{
+    // 1, ..., ?, n (no duplicates)
+    generateReverselySortedInput(arr, n);
+    random_shuffle(arr.begin(), arr.end());
+}
+
 int main() 
 {
+    ofstream outFile;
+    outFile.open("results.txt");
+    
+    // computer internal clock controls the choice of the seed
+    srand(unsigned(time(NULL)));
+
     // test sorting algorithms working correctly
     testSortingAlgorithms();
 
@@ -147,17 +173,19 @@ int main()
     vector<int> vecArr = {};
 
     // a vector to store the number of inputs (n)
-    vector<int> inputArr = { 100 };
+    vector<int> inputArr = { 10 };
     // vector<int> inputArr = { 100, 200, 300, 400, 500, 1000, 4000, 10000 };
 
     // variables to determine running time of algorithms
     using namespace std::chrono;
     high_resolution_clock::time_point t1, t2;
     chrono::duration<double, milli> runningTime;
-    
 
-    for (int i = 0; i < inputArr.size(); i++) {
-        // for each n, obtain inputs for the vecArr
+    for (int i = 0; i < inputArr.size(); i++) 
+    {
+        outFile << "Input size: " << inputArr[i] << endl;
+
+        // #INPUT #1: n, n-1, ..., 3, 2, 1
         generateSortedInput(vecArr, inputArr[i]);
 
         // run insertion sort on vecArr and obtain running time
@@ -165,9 +193,9 @@ int main()
         insertionSort(vecArr);
         t2 = high_resolution_clock::now();
         runningTime = t2 - t1;
-        cout << "Insertion sort time: " << runningTime.count() << endl;
+        outFile << "InsertionSort Running Time For SortedInput: " << runningTime.count() << endl;
 
-        // after one algorithm runs, the vector needs to be initialized
+        // clear vector and initialize
         vecArr.clear();
         generateSortedInput(vecArr, inputArr[i]);
 
@@ -176,9 +204,53 @@ int main()
         mergeSort(vecArr, 0, static_cast<int>(vecArr.size() - 1));
         t2 = high_resolution_clock::now();
         runningTime = t2 - t1;
-        cout << "Merge sort time: " << runningTime.count() << endl;
-    }
+        outFile << "MergeSort Running Time For SortedInput: " << runningTime.count() << endl;
 
+        // #INPUT #2: 1, 2, 3, ..n
+        vecArr.clear();
+        generateReverselySortedInput(vecArr, inputArr[i]);
+
+        // run insertion sort on vecArr and obtain running time
+        t1 = high_resolution_clock::now();
+        insertionSort(vecArr);
+        t2 = high_resolution_clock::now();
+        runningTime = t2 - t1;
+        outFile << "InsertionSort Running Time For ReverselySortedInput: " << runningTime.count() << endl;
+
+        // clear vector and initialize
+        vecArr.clear();
+        generateSortedInput(vecArr, inputArr[i]);
+
+        // run merge sort on vecArr and obtain running time
+        t1 = high_resolution_clock::now();
+        mergeSort(vecArr, 0, static_cast<int>(vecArr.size() - 1));
+        t2 = high_resolution_clock::now();
+        runningTime = t2 - t1;
+        outFile << "MergeSort Running Time For ReverselySortedInput: " << runningTime.count() << endl;
+
+        // #INPUT #3: 1, ..., ?, n (no duplicates)
+        vecArr.clear();
+        generateRandomPermutation(vecArr, inputArr[i]);
+
+        // run insertion sort on vecArr and obtain running time
+        t1 = high_resolution_clock::now();
+        insertionSort(vecArr);
+        t2 = high_resolution_clock::now();
+        runningTime = t2 - t1;
+        outFile << "InsertionSort Running Time For RandomPermutation: " << runningTime.count() << endl;
+
+        // clear vector and initialize
+        vecArr.clear();
+        generateRandomPermutation(vecArr, inputArr[i]);
+
+        // run merge sort on vecArr and obtain running time
+        t1 = high_resolution_clock::now();
+        mergeSort(vecArr, 0, static_cast<int>(vecArr.size() - 1));
+        t2 = high_resolution_clock::now();
+        runningTime = t2 - t1;
+        outFile << "MergeSort Running Time For RandomPermutation: " << runningTime.count() << endl;
+    }
+    
     system("pause");
     return 0;
 }
