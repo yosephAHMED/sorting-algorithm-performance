@@ -158,6 +158,17 @@ void generateRandomPermutation(vector<int>& arr, int n)
     random_shuffle(arr.begin(), arr.end());
 }
 
+void generateRandomInput(vector<int>& arr, int n)
+{
+    // ?, ?, ..., ? (duplicates ok)
+    int randomNum;
+    for (int i = 0; i < n; i++)
+    {
+        randomNum = 1 + rand() % n;
+        arr.push_back(randomNum);
+    }
+}
+
 int main() 
 {
     ofstream outFile;
@@ -173,7 +184,7 @@ int main()
     vector<int> vecArr = {};
 
     // a vector to store the number of inputs (n)
-    vector<int> inputArr = { 10 };
+    vector<int> inputArr = { 100 };
     // vector<int> inputArr = { 100, 200, 300, 400, 500, 1000, 4000, 10000 };
 
     // variables to determine running time of algorithms
@@ -185,6 +196,7 @@ int main()
     {
         outFile << "Input size: " << inputArr[i] << endl;
 
+        // --------------------------------------
         // #INPUT #1: n, n-1, ..., 3, 2, 1
         generateSortedInput(vecArr, inputArr[i]);
 
@@ -206,6 +218,7 @@ int main()
         runningTime = t2 - t1;
         outFile << "MergeSort Running Time For SortedInput: " << runningTime.count() << endl;
 
+        // --------------------------------------
         // #INPUT #2: 1, 2, 3, ..n
         vecArr.clear();
         generateReverselySortedInput(vecArr, inputArr[i]);
@@ -228,6 +241,7 @@ int main()
         runningTime = t2 - t1;
         outFile << "MergeSort Running Time For ReverselySortedInput: " << runningTime.count() << endl;
 
+        // --------------------------------------
         // #INPUT #3: 1, ..., ?, n (no duplicates)
         vecArr.clear();
         generateRandomPermutation(vecArr, inputArr[i]);
@@ -249,6 +263,40 @@ int main()
         t2 = high_resolution_clock::now();
         runningTime = t2 - t1;
         outFile << "MergeSort Running Time For RandomPermutation: " << runningTime.count() << endl;
+
+        // --------------------------------------
+        // 50 instances of n random numbers generated in the range of [1..n]
+        // take average over 50 runs
+        // #INPUT #4: ?, ..., ?, n (duplicates ok)
+        // tInsertionRT - total insertion sort running time
+        // tMergeRT - total merge sort running time
+        double tInsertionRT = 0;
+        double tMergeRT = 0;
+        for (int j = 0; j < 50; j++)
+        {
+            vecArr.clear();
+            generateRandomInput(vecArr, inputArr[i]);
+
+            // run insertion sort on vecArr and obtain running time
+            t1 = high_resolution_clock::now();
+            insertionSort(vecArr);
+            t2 = high_resolution_clock::now();
+            runningTime = t2 - t1;
+            tInsertionRT = tInsertionRT + runningTime.count();
+
+            // clear vector and initialize
+            vecArr.clear();
+            generateRandomInput(vecArr, inputArr[i]);
+
+            // run merge sort on vecArr and obtain running time
+            t1 = high_resolution_clock::now();
+            mergeSort(vecArr, 0, static_cast<int>(vecArr.size() - 1));
+            t2 = high_resolution_clock::now();
+            runningTime = t2 - t1;
+            tMergeRT = tMergeRT + runningTime.count();
+        }
+        outFile << "InsertionSort Running Time For RandomInput: " << tInsertionRT/50 << endl;
+        outFile << "MergeSort Running Time For RandomInput: " << tMergeRT/50 << endl;
     }
     
     system("pause");
