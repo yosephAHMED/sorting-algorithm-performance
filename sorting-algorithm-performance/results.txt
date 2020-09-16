@@ -1,77 +1,80 @@
 Input size: 100
-InsertionSort for SortedInput:                    Running Time(ms): 0.8698      Steps: 35551                           
-MergeSort for SortedInput:                        Running Time(ms): 0.9326      Steps: 4192                            
-InsertionSort for ReverselySortedInput:           Running Time(ms): 0.0094      Steps: 298                             
-MergeSort for ReverselySortedInput:               Running Time(ms): 0.9153      Steps: 4192                            
-InsertionSort for RandomPermutation:              Running Time(ms): 0.3285      Steps: 18519                           
-MergeSort for RandomPermutation:                  Running Time(ms): 0.5267      Steps: 5402                            
-InsertionSort for 50 instances of RandomInput:    Running Time(ms): 0.46279     Steps: 17344                           
-MergeSort for 50 instances of RandomInput:        Running Time(ms): 0.819466    Steps: 5374                            
+InsertionSort for SortedInput:                    Running Time(ms): 0.7492      Steps: 35551                           
+MergeSort for SortedInput:                        Running Time(ms): 0.713       Steps: 4192                            
+InsertionSort for ReverselySortedInput:           Running Time(ms): 0.0088      Steps: 298                             
+MergeSort for ReverselySortedInput:               Running Time(ms): 0.719       Steps: 4192                            
+InsertionSort for RandomPermutation:              Running Time(ms): 0.4404      Steps: 18113                           
+MergeSort for RandomPermutation:                  Running Time(ms): 0.7391      Steps: 5377                            
+InsertionSort for 50 instances of RandomInput:    Running Time(ms): 0.476326    Steps: 17198                           
+MergeSort for 50 instances of RandomInput:        Running Time(ms): 0.848774    Steps: 5379                            
 
 Input size: 200
-InsertionSort for SortedInput:                    Running Time(ms): 4.4905      Steps: 175968                          
-MergeSort for SortedInput:                        Running Time(ms): 1.5532      Steps: 9200                            
-InsertionSort for ReverselySortedInput:           Running Time(ms): 0.0182      Steps: 598                             
-MergeSort for ReverselySortedInput:               Running Time(ms): 1.5555      Steps: 9200                            
-InsertionSort for RandomPermutation:              Running Time(ms): 2.0403      Steps: 75323                           
-MergeSort for RandomPermutation:                  Running Time(ms): 1.6435      Steps: 12011                           
-InsertionSort for 50 instances of RandomInput:    Running Time(ms): 1.82255     Steps: 70375                           
-MergeSort for 50 instances of RandomInput:        Running Time(ms): 1.64975     Steps: 12058                           
+InsertionSort for SortedInput:                    Running Time(ms): 3.8604      Steps: 139898                          
+MergeSort for SortedInput:                        Running Time(ms): 1.7145      Steps: 9200                            
+InsertionSort for ReverselySortedInput:           Running Time(ms): 0.0176      Steps: 598                             
+MergeSort for ReverselySortedInput:               Running Time(ms): 1.7244      Steps: 9200                            
+InsertionSort for RandomPermutation:              Running Time(ms): 1.949       Steps: 70878                           
+MergeSort for RandomPermutation:                  Running Time(ms): 1.7889      Steps: 12139                           
+InsertionSort for 50 instances of RandomInput:    Running Time(ms): 1.77578     Steps: 69578                           
+MergeSort for 50 instances of RandomInput:        Running Time(ms): 1.64154     Steps: 12065                           
 
 Input size: 300
-InsertionSort for SortedInput:                    Running Time(ms): 12.6708     Steps: 458066                          
-MergeSort for SortedInput:                        Running Time(ms): 2.6954      Steps: 14480                           
+InsertionSort for SortedInput:                    Running Time(ms): 6.2095      Steps: 314848                          
+MergeSort for SortedInput:                        Running Time(ms): 2.394       Steps: 14480                           
 InsertionSort for ReverselySortedInput:           Running Time(ms): 0.0274      Steps: 898                             
-MergeSort for ReverselySortedInput:               Running Time(ms): 2.7214      Steps: 14480                           
-InsertionSort for RandomPermutation:              Running Time(ms): 4.5888      Steps: 165454                          
-MergeSort for RandomPermutation:                  Running Time(ms): 2.7789      Steps: 19326                           
-InsertionSort for 50 instances of RandomInput:    Running Time(ms): 4.23964     Steps: 159288                          
-MergeSort for 50 instances of RandomInput:        Running Time(ms): 2.61021     Steps: 19239                           
+MergeSort for ReverselySortedInput:               Running Time(ms): 2.4671      Steps: 14480                           
+InsertionSort for RandomPermutation:              Running Time(ms): 4.2827      Steps: 156452                          
+MergeSort for RandomPermutation:                  Running Time(ms): 2.6128      Steps: 19228                           
+InsertionSort for 50 instances of RandomInput:    Running Time(ms): 3.80968     Steps: 156308                          
+MergeSort for 50 instances of RandomInput:        Running Time(ms): 2.36503     Steps: 19239                           
 
 Input size: 400
-InsertionSort for SortedInput:                    Running Time(ms): 22.652      Steps: 879366                          
-MergeSort for SortedInput:                        Running Time(ms): 3.2175      Steps: 20016                           
-InsertionSort for ReverselySortedInput:           Running Time(ms): 0.0354      Steps: 1198                            
-MergeSort for ReverselySortedInput:               Running Time(ms): 3.1909      Steps: 20016                           
-InsertionSort for RandomPermutation:              Running Time(ms): 7.4397      Steps: 288548                          
-MergeSort for RandomPermutation:                  Running Time(ms): 3.3412      Steps: 26731                           
-InsertionSort for 50 instances of RandomInput:    Running Time(ms): 7.30652     Steps: 280684                          
-MergeSort for 50 instances of RandomInput:        Running Time(ms): 3.39158     Steps: 26717                           
+InsertionSort for SortedInput:                    Running Time(ms): 14.4657     Steps: 559798                          
+MergeSort for SortedInput:                        Running Time(ms): 3.3468      Steps: 20016                           
+InsertionSort for ReverselySortedInput:           Running Time(ms): 0.0411      Steps: 1198                            
+MergeSort for ReverselySortedInput:               Running Time(ms): 3.3258      Steps: 20016                           
+InsertionSort for RandomPermutation:              Running Time(ms): 7.4896      Steps: 284544                          
+MergeSort for RandomPermutation:                  Running Time(ms): 3.3759      Steps: 26628                           
+InsertionSort for 50 instances of RandomInput:    Running Time(ms): 7.23912     Steps: 280777                          
+MergeSort for 50 instances of RandomInput:        Running Time(ms): 3.40546     Steps: 26712                           
 
 Input size: 500
-InsertionSort for SortedInput:                    Running Time(ms): 36.5339     Steps: 1424314                         
-MergeSort for SortedInput:                        Running Time(ms): 4.0853      Steps: 25824                           
-InsertionSort for ReverselySortedInput:           Running Time(ms): 0.0456      Steps: 1498                            
-MergeSort for ReverselySortedInput:               Running Time(ms): 4.0066      Steps: 25824                           
-InsertionSort for RandomPermutation:              Running Time(ms): 11.3306     Steps: 439719                          
-MergeSort for RandomPermutation:                  Running Time(ms): 4.2526      Steps: 34303                           
-InsertionSort for 50 instances of RandomInput:    Running Time(ms): 9.53055     Steps: 436760                          
-MergeSort for 50 instances of RandomInput:        Running Time(ms): 3.55227     Steps: 34316                           
+InsertionSort for SortedInput:                    Running Time(ms): 23.0238     Steps: 874748                          
+MergeSort for SortedInput:                        Running Time(ms): 4.2185      Steps: 25824                           
+InsertionSort for ReverselySortedInput:           Running Time(ms): 0.0481      Steps: 1498                            
+MergeSort for ReverselySortedInput:               Running Time(ms): 4.0384      Steps: 25824                           
+InsertionSort for RandomPermutation:              Running Time(ms): 11.5624     Steps: 448770                          
+MergeSort for RandomPermutation:                  Running Time(ms): 4.2281      Steps: 34326                           
+InsertionSort for 50 instances of RandomInput:    Running Time(ms): 10.4175     Steps: 438468                          
+MergeSort for 50 instances of RandomInput:        Running Time(ms): 3.95236     Steps: 34328                           
 
 Input size: 1000
-InsertionSort for SortedInput:                    Running Time(ms): 122.779     Steps: 4395248                         
-MergeSort for SortedInput:                        Running Time(ms): 9.1674      Steps: 55664                           
-InsertionSort for ReverselySortedInput:           Running Time(ms): 0.1165      Steps: 2998                            
-MergeSort for ReverselySortedInput:               Running Time(ms): 8.8402      Steps: 55664                           
-InsertionSort for RandomPermutation:              Running Time(ms): 49.4764     Steps: 1767747                         
-MergeSort for RandomPermutation:                  Running Time(ms): 9.4848      Steps: 75112                           
-InsertionSort for 50 instances of RandomInput:    Running Time(ms): 42.7695     Steps: 1750072                         
-MergeSort for 50 instances of RandomInput:        Running Time(ms): 8.23624     Steps: 75148                           
+InsertionSort for SortedInput:                    Running Time(ms): 89.5921     Steps: 3499498                         
+MergeSort for SortedInput:                        Running Time(ms): 8.3475      Steps: 55664                           
+InsertionSort for ReverselySortedInput:           Running Time(ms): 0.091       Steps: 2998                            
+MergeSort for ReverselySortedInput:               Running Time(ms): 8.3336      Steps: 55664                           
+InsertionSort for RandomPermutation:              Running Time(ms): 43.0577     Steps: 1671539                         
+MergeSort for RandomPermutation:                  Running Time(ms): 8.7109      Steps: 75089                           
+InsertionSort for 50 instances of RandomInput:    Running Time(ms): 44.0939     Steps: 1749772                         
+MergeSort for 50 instances of RandomInput:        Running Time(ms): 8.56451     Steps: 75161                           
 
 Input size: 4000
-InsertionSort for SortedInput:                    Running Time(ms): 1450.43     Steps: 59554989                        
-MergeSort for SortedInput:                        Running Time(ms): 33.7651     Steps: 254704                          
-InsertionSort for ReverselySortedInput:           Running Time(ms): 0.3431      Steps: 11998                           
-MergeSort for ReverselySortedInput:               Running Time(ms): 34.108      Steps: 254704                          
-InsertionSort for RandomPermutation:              Running Time(ms): 702.037     Steps: 28095760                        
-MergeSort for RandomPermutation:                  Running Time(ms): 36.0742     Steps: 352607                          
-InsertionSort for 50 instances of RandomInput:    Running Time(ms): 687.052     Steps: 27992474                        
-MergeSort for 50 instances of RandomInput:        Running Time(ms): 35.1531     Steps: 352636                          
+InsertionSort for SortedInput:                    Running Time(ms): 1139.75     Steps: 55997998                        
+MergeSort for SortedInput:                        Running Time(ms): 38.323      Steps: 254704                          
+InsertionSort for ReverselySortedInput:           Running Time(ms): 0.4002      Steps: 11998                           
+MergeSort for ReverselySortedInput:               Running Time(ms): 38.0229     Steps: 254704                          
+InsertionSort for RandomPermutation:              Running Time(ms): 709.821     Steps: 27680016                        
+MergeSort for RandomPermutation:                  Running Time(ms): 36.4525     Steps: 352547                          
+InsertionSort for 50 instances of RandomInput:    Running Time(ms): 687.36      Steps: 27972409                        
+MergeSort for 50 instances of RandomInput:        Running Time(ms): 35.1481     Steps: 352633                          
 
 Input size: 10000
-InsertionSort for SortedInput:                    Running Time(ms): 9940.32     Steps: 404740061                       
-MergeSort for SortedInput:                        Running Time(ms): 92.5742     Steps: 685648                          
-InsertionSort for ReverselySortedInput:           Running Time(ms): 0.9363      Steps: 29998                           
-MergeSort for ReverselySortedInput:               Running Time(ms): 94.1371     Steps: 685648                          
-InsertionSort for RandomPermutation:              Running Time(ms): 4256.54     Steps: 174325637                       
-MergeSort for RandomPermutation:                  Running Time(ms): 95.2642     Steps: 970370                          
+InsertionSort for SortedInput:                    Running Time(ms): 8404.18     Steps: 349994998                       
+MergeSort for SortedInput:                        Running Time(ms): 88.7606     Steps: 685648                          
+InsertionSort for ReverselySortedInput:           Running Time(ms): 0.8879      Steps: 29998                           
+MergeSort for ReverselySortedInput:               Running Time(ms): 60.2425     Steps: 685648                          
+InsertionSort for RandomPermutation:              Running Time(ms): 4380.43     Steps: 174587451                       
+MergeSort for RandomPermutation:                  Running Time(ms): 98.404      Steps: 970065                          
+InsertionSort for 50 instances of RandomInput:    Running Time(ms): 4264.45     Steps: 175007591                       
+MergeSort for 50 instances of RandomInput:        Running Time(ms): 89.3404     Steps: 970322                          
+
