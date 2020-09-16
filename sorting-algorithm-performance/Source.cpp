@@ -258,8 +258,7 @@ int main()
     vector<int> vecArr = {};
 
     // a vector to store the number of inputs (n)
-    vector<int> inputArr = { 100 };
-    // vector<int> inputArr = { 100, 200, 300, 400, 500, 1000, 4000, 10000 };
+    vector<int> inputArr = { 100, 200, 300, 400, 500, 1000, 4000, 10000 };
 
     // variables to determine running time of algorithms
     using namespace std::chrono;
@@ -404,6 +403,8 @@ int main()
 
         outFile << setw(50) << left << "InsertionSort for 50 instances of RandomInput:" << setw(18) << left << "Running Time(ms): " << setw(12) << tInsertionRT/50 << setw(7) << left << "Steps: " << setw(32) << iNumSteps/50 << endl;
         outFile << setw(50) << left << "MergeSort for 50 instances of RandomInput:" << setw(18) << left << "Running Time(ms): " << setw(12) << tMergeRT / 50 << setw(7) << left << "Steps: " << setw(32) << mNumSteps / 50 << endl << endl;
+
+        vecArr.clear();
     }
     
     system("pause");
