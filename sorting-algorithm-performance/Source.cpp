@@ -209,7 +209,7 @@ void testSortingAlgorithms()
     */
 }
 
-void generateSortedInput(vector<int> &arr, int n) 
+void generateReverselySortedInput(vector<int> &arr, int n) 
 {
     // n, n-1, ..., 3, 2, 1
     for (int i = n; i > 0; i--) {
@@ -217,7 +217,7 @@ void generateSortedInput(vector<int> &arr, int n)
     }
 }
 
-void generateReverselySortedInput(vector<int>& arr, int n)
+void generateSortedInput(vector<int>& arr, int n)
 {
     // 1, 2, 3, ..., n
     for (int i = 0; i < n; i++) {
@@ -228,7 +228,7 @@ void generateReverselySortedInput(vector<int>& arr, int n)
 void generateRandomPermutation(vector<int>& arr, int n)
 {
     // 1, ..., ?, n (no duplicates)
-    generateReverselySortedInput(arr, n);
+    generateSortedInput(arr, n);
     random_shuffle(arr.begin(), arr.end());
 }
 
@@ -271,35 +271,6 @@ int main()
 
         // --------------------------------------
         // #INPUT #1: n, n-1, ..., 3, 2, 1
-        generateSortedInput(vecArr, inputArr[i]);
-
-        // run insertion sort on vecArr and obtain running time
-        t1 = high_resolution_clock::now();
-        insertionSort(vecArr);
-        t2 = high_resolution_clock::now();
-        runningTime = t2 - t1;
-        outFile << setw(50) << left << "InsertionSort for SortedInput:" << setw(18) << left << "Running Time(ms): " << setw(12) << runningTime.count() << setw(7) << left << "Steps: " << setw(32) << numSteps << endl;
-
-        // clear vector and initialize
-        vecArr.clear();
-        generateSortedInput(vecArr, inputArr[i]);
-
-        // reset numSteps counter to 0
-        numSteps = 0;
-
-        // run merge sort on vecArr and obtain running time
-        t1 = high_resolution_clock::now();
-        mergeSort(vecArr, 0, static_cast<int>(vecArr.size() - 1));
-        t2 = high_resolution_clock::now();
-        runningTime = t2 - t1;
-        outFile << setw(50) << left << "MergeSort for SortedInput:" << setw(18) << left << "Running Time(ms): " << setw(12) << runningTime.count() << setw(7) << left << "Steps: " << setw(32) << numSteps << endl;
-
-        // reset numSteps counter to 0
-        numSteps = 0;
-
-        // --------------------------------------
-        // #INPUT #2: 1, 2, 3, ..n
-        vecArr.clear();
         generateReverselySortedInput(vecArr, inputArr[i]);
 
         // run insertion sort on vecArr and obtain running time
@@ -311,7 +282,7 @@ int main()
 
         // clear vector and initialize
         vecArr.clear();
-        generateSortedInput(vecArr, inputArr[i]);
+        generateReverselySortedInput(vecArr, inputArr[i]);
 
         // reset numSteps counter to 0
         numSteps = 0;
@@ -322,6 +293,35 @@ int main()
         t2 = high_resolution_clock::now();
         runningTime = t2 - t1;
         outFile << setw(50) << left << "MergeSort for ReverselySortedInput:" << setw(18) << left << "Running Time(ms): " << setw(12) << runningTime.count() << setw(7) << left << "Steps: " << setw(32) << numSteps << endl;
+
+        // reset numSteps counter to 0
+        numSteps = 0;
+
+        // --------------------------------------
+        // #INPUT #2: 1, 2, 3, ..n
+        vecArr.clear();
+        generateSortedInput(vecArr, inputArr[i]);
+
+        // run insertion sort on vecArr and obtain running time
+        t1 = high_resolution_clock::now();
+        insertionSort(vecArr);
+        t2 = high_resolution_clock::now();
+        runningTime = t2 - t1;
+        outFile << setw(50) << left << "InsertionSort for SortedInput:" << setw(18) << left << "Running Time(ms): " << setw(12) << runningTime.count() << setw(7) << left << "Steps: " << setw(32) << numSteps << endl;
+
+        // clear vector and initialize
+        vecArr.clear();
+        generateReverselySortedInput(vecArr, inputArr[i]);
+
+        // reset numSteps counter to 0
+        numSteps = 0;
+
+        // run merge sort on vecArr and obtain running time
+        t1 = high_resolution_clock::now();
+        mergeSort(vecArr, 0, static_cast<int>(vecArr.size() - 1));
+        t2 = high_resolution_clock::now();
+        runningTime = t2 - t1;
+        outFile << setw(50) << left << "MergeSort for SortedInput:" << setw(18) << left << "Running Time(ms): " << setw(12) << runningTime.count() << setw(7) << left << "Steps: " << setw(32) << numSteps << endl;
 
         // reset numSteps counter to 0
         numSteps = 0;
