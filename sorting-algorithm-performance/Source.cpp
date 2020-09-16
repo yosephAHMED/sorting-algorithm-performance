@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <ctime>
 #include <cstdlib>
+#include <math.h>
 using namespace std;
 
 // counter for number of steps per sorting algorithm of input size n
@@ -265,6 +266,11 @@ int main()
     high_resolution_clock::time_point t1, t2;
     chrono::duration<double, milli> runningTime;
 
+    // C constant
+    // insertion = steps/n^2
+    // merge = steps/(n*logn)
+    long double cApproximation = 0;
+
     for (int i = 0; i < inputArr.size(); i++) 
     {
         outFile << "Input size: " << inputArr[i] << endl;
@@ -278,7 +284,10 @@ int main()
         insertionSort(vecArr);
         t2 = high_resolution_clock::now();
         runningTime = t2 - t1;
-        outFile << setw(50) << left << "InsertionSort for ReverselySortedInput:" << setw(18) << left << "Running Time(ms): " << setw(12) << runningTime.count() << setw(7) << left << "Steps: " << setw(32) << numSteps << endl;
+
+        cApproximation = numSteps / pow(inputArr[i], 2);
+
+        outFile << setw(50) << left << "InsertionSort for ReverselySortedInput:" << setw(18) << left << "Running Time(ms): " << setw(12) << runningTime.count() << setw(7) << left << "Steps: " << setw(32) << numSteps << setw(3) << left << "C= " << setw(32) << cApproximation << endl;
 
         // clear vector and initialize
         vecArr.clear();
@@ -292,7 +301,10 @@ int main()
         mergeSort(vecArr, 0, static_cast<int>(vecArr.size() - 1));
         t2 = high_resolution_clock::now();
         runningTime = t2 - t1;
-        outFile << setw(50) << left << "MergeSort for ReverselySortedInput:" << setw(18) << left << "Running Time(ms): " << setw(12) << runningTime.count() << setw(7) << left << "Steps: " << setw(32) << numSteps << endl;
+
+        cApproximation = numSteps / (inputArr[i] * log(inputArr[i]));
+
+        outFile << setw(50) << left << "MergeSort for ReverselySortedInput:" << setw(18) << left << "Running Time(ms): " << setw(12) << runningTime.count() << setw(7) << left << "Steps: " << setw(32) << numSteps << setw(3) << left << "C= " << setw(32) << cApproximation << endl;
 
         // reset numSteps counter to 0
         numSteps = 0;
@@ -307,7 +319,10 @@ int main()
         insertionSort(vecArr);
         t2 = high_resolution_clock::now();
         runningTime = t2 - t1;
-        outFile << setw(50) << left << "InsertionSort for SortedInput:" << setw(18) << left << "Running Time(ms): " << setw(12) << runningTime.count() << setw(7) << left << "Steps: " << setw(32) << numSteps << endl;
+
+        cApproximation = numSteps / pow(inputArr[i], 2);
+
+        outFile << setw(50) << left << "InsertionSort for SortedInput:" << setw(18) << left << "Running Time(ms): " << setw(12) << runningTime.count() << setw(7) << left << "Steps: " << setw(32) << numSteps << setw(3) << left << "C= " << setw(32) << cApproximation << endl;
 
         // clear vector and initialize
         vecArr.clear();
@@ -321,7 +336,10 @@ int main()
         mergeSort(vecArr, 0, static_cast<int>(vecArr.size() - 1));
         t2 = high_resolution_clock::now();
         runningTime = t2 - t1;
-        outFile << setw(50) << left << "MergeSort for SortedInput:" << setw(18) << left << "Running Time(ms): " << setw(12) << runningTime.count() << setw(7) << left << "Steps: " << setw(32) << numSteps << endl;
+
+        cApproximation = numSteps / (inputArr[i] * log(inputArr[i]));
+
+        outFile << setw(50) << left << "MergeSort for SortedInput:" << setw(18) << left << "Running Time(ms): " << setw(12) << runningTime.count() << setw(7) << left << "Steps: " << setw(32) << numSteps << setw(3) << left << "C= " << setw(32) << cApproximation << endl;
 
         // reset numSteps counter to 0
         numSteps = 0;
@@ -336,7 +354,10 @@ int main()
         insertionSort(vecArr);
         t2 = high_resolution_clock::now();
         runningTime = t2 - t1;
-        outFile << setw(50) << left << "InsertionSort for RandomPermutation:" << setw(18) << left << "Running Time(ms): " << setw(12) << runningTime.count() << setw(7) << left << "Steps: " << setw(32) << numSteps << endl;
+
+        cApproximation = numSteps / pow(inputArr[i], 2);
+
+        outFile << setw(50) << left << "InsertionSort for RandomPermutation:" << setw(18) << left << "Running Time(ms): " << setw(12) << runningTime.count() << setw(7) << left << "Steps: " << setw(32) << numSteps << setw(3) << left << "C= " << setw(32) << cApproximation << endl;
 
         // clear vector and initialize
         vecArr.clear();
@@ -350,7 +371,10 @@ int main()
         mergeSort(vecArr, 0, static_cast<int>(vecArr.size() - 1));
         t2 = high_resolution_clock::now();
         runningTime = t2 - t1;
-        outFile << setw(50) << left << "MergeSort for RandomPermutation:" << setw(18) << left << "Running Time(ms): " << setw(12) << runningTime.count() << setw(7) << left << "Steps: " << setw(32) << numSteps << endl;
+
+        cApproximation = numSteps / (inputArr[i] * log(inputArr[i]));
+
+        outFile << setw(50) << left << "MergeSort for RandomPermutation:" << setw(18) << left << "Running Time(ms): " << setw(12) << runningTime.count() << setw(7) << left << "Steps: " << setw(32) << numSteps << setw(3) << left << "C= " << setw(32) << cApproximation << endl;
 
         // reset numSteps counter to 0
         numSteps = 0;
@@ -401,8 +425,11 @@ int main()
             numSteps = 0;
         }
 
-        outFile << setw(50) << left << "InsertionSort for 50 instances of RandomInput:" << setw(18) << left << "Running Time(ms): " << setw(12) << tInsertionRT/50 << setw(7) << left << "Steps: " << setw(32) << iNumSteps/50 << endl;
-        outFile << setw(50) << left << "MergeSort for 50 instances of RandomInput:" << setw(18) << left << "Running Time(ms): " << setw(12) << tMergeRT / 50 << setw(7) << left << "Steps: " << setw(32) << mNumSteps / 50 << endl << endl;
+        cApproximation = (iNumSteps/50) / pow(inputArr[i], 2);
+        outFile << setw(50) << left << "InsertionSort for 50 instances of RandomInput:" << setw(18) << left << "Running Time(ms): " << setw(12) << tInsertionRT/50 << setw(7) << left << "Steps: " << setw(32) << iNumSteps/50 << setw(3) << left << "C= " << setw(32) << cApproximation << endl;
+        
+        cApproximation = (mNumSteps/50) / (inputArr[i] * log(inputArr[i]));
+        outFile << setw(50) << left << "MergeSort for 50 instances of RandomInput:" << setw(18) << left << "Running Time(ms): " << setw(12) << tMergeRT / 50 << setw(7) << left << "Steps: " << setw(32) << mNumSteps / 50 << setw(3) << left << "C= " << setw(32) << cApproximation << endl << endl;
 
         vecArr.clear();
     }
