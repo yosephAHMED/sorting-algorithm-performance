@@ -7,6 +7,9 @@
 #include <cstdlib>
 using namespace std;
 
+// counter for number of steps per sorting algorithm of input size n
+long long int numSteps = 0;
+
 void printVector(vector<int>& arr)
 {
     for (int i = 0; i < arr.size(); i++) {
@@ -18,9 +21,19 @@ void printVector(vector<int>& arr)
 
 void insertionSort(vector<int> &arr)
 {
-    // start at the first index and iterate through to the end
-    for (int i = 1; i < arr.size(); i++) {
+    // initialization of i = 1 in for loop counts as 1 step
+    numSteps += 1;
+
+    for (int i = 1; i < arr.size(); i++) 
+    {
+        // boolean comparison and incrementing i counts as 2 steps
+        numSteps += 2;
+
         int currentIndex = i;
+
+        // assignment counts as 1 step
+        numSteps++;
+
         /*
          * Check:
          *      1. that currentIndex is at least 1
@@ -28,11 +41,19 @@ void insertionSort(vector<int> &arr)
          *
          * If both conditions are met, swap the indexes
          */
-        while (currentIndex > 0 && arr[currentIndex - 1] > arr[currentIndex]) {
+
+        while (currentIndex > 0 && arr[currentIndex - 1] > arr[currentIndex]) 
+        {
+            // three logical comparisons counts as 3 steps
+            numSteps += 3;
+
             int temp = arr[currentIndex];
             arr[currentIndex] = arr[currentIndex - 1];
             arr[currentIndex - 1] = temp;
             currentIndex--;
+
+            // four assignments counts as 4 steps
+            numSteps += 4;
         }
     }
 }
@@ -295,8 +316,8 @@ int main()
             runningTime = t2 - t1;
             tMergeRT = tMergeRT + runningTime.count();
         }
-        outFile << "InsertionSort Running Time For RandomInput: " << tInsertionRT/50 << endl;
-        outFile << "MergeSort Running Time For RandomInput: " << tMergeRT/50 << endl;
+        outFile << "InsertionSort Average Running Time For RandomInput: " << tInsertionRT/50 << endl;
+        outFile << "MergeSort Average Running Time For RandomInput: " << tMergeRT/50 << endl;
     }
     
     system("pause");
