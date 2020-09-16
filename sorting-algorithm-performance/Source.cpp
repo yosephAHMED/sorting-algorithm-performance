@@ -279,7 +279,7 @@ int main()
         insertionSort(vecArr);
         t2 = high_resolution_clock::now();
         runningTime = t2 - t1;
-        outFile << "InsertionSort Running Time For SortedInput: " << runningTime.count() << " ms" << "\t\tSteps: " << numSteps << endl;
+        outFile << setw(50) << left << "InsertionSort for SortedInput:" << setw(18) << left << "Running Time(ms): " << setw(12) << runningTime.count() << setw(7) << left << "Steps: " << setw(32) << numSteps << endl;
 
         // clear vector and initialize
         vecArr.clear();
@@ -293,7 +293,7 @@ int main()
         mergeSort(vecArr, 0, static_cast<int>(vecArr.size() - 1));
         t2 = high_resolution_clock::now();
         runningTime = t2 - t1;
-        outFile << "MergeSort Running Time For SortedInput: " << runningTime.count() << " ms" << "\t\tSteps: " << numSteps << endl;
+        outFile << setw(50) << left << "MergeSort for SortedInput:" << setw(18) << left << "Running Time(ms): " << setw(12) << runningTime.count() << setw(7) << left << "Steps: " << setw(32) << numSteps << endl;
 
         // reset numSteps counter to 0
         numSteps = 0;
@@ -308,7 +308,7 @@ int main()
         insertionSort(vecArr);
         t2 = high_resolution_clock::now();
         runningTime = t2 - t1;
-        outFile << "InsertionSort Running Time For ReverselySortedInput: " << runningTime.count() << " ms" << "\t\tSteps: " << numSteps << endl;
+        outFile << setw(50) << left << "InsertionSort for ReverselySortedInput:" << setw(18) << left << "Running Time(ms): " << setw(12) << runningTime.count() << setw(7) << left << "Steps: " << setw(32) << numSteps << endl;
 
         // clear vector and initialize
         vecArr.clear();
@@ -322,7 +322,7 @@ int main()
         mergeSort(vecArr, 0, static_cast<int>(vecArr.size() - 1));
         t2 = high_resolution_clock::now();
         runningTime = t2 - t1;
-        outFile << "MergeSort Running Time For ReverselySortedInput: " << runningTime.count() << " ms" << "\t\tSteps: " << numSteps << endl;
+        outFile << setw(50) << left << "MergeSort for ReverselySortedInput:" << setw(18) << left << "Running Time(ms): " << setw(12) << runningTime.count() << setw(7) << left << "Steps: " << setw(32) << numSteps << endl;
 
         // reset numSteps counter to 0
         numSteps = 0;
@@ -337,7 +337,7 @@ int main()
         insertionSort(vecArr);
         t2 = high_resolution_clock::now();
         runningTime = t2 - t1;
-        outFile << "InsertionSort Running Time For RandomPermutation: " << runningTime.count() << " ms" << "\t\tSteps: " << numSteps <<  endl;
+        outFile << setw(50) << left << "InsertionSort for RandomPermutation:" << setw(18) << left << "Running Time(ms): " << setw(12) << runningTime.count() << setw(7) << left << "Steps: " << setw(32) << numSteps << endl;
 
         // clear vector and initialize
         vecArr.clear();
@@ -351,7 +351,7 @@ int main()
         mergeSort(vecArr, 0, static_cast<int>(vecArr.size() - 1));
         t2 = high_resolution_clock::now();
         runningTime = t2 - t1;
-        outFile << "MergeSort Running Time For RandomPermutation: " << runningTime.count() << " ms" << "\t\tSteps: " << numSteps << endl;
+        outFile << setw(50) << left << "MergeSort for RandomPermutation:" << setw(18) << left << "Running Time(ms): " << setw(12) << runningTime.count() << setw(7) << left << "Steps: " << setw(32) << numSteps << endl;
 
         // reset numSteps counter to 0
         numSteps = 0;
@@ -402,8 +402,8 @@ int main()
             numSteps = 0;
         }
 
-        outFile << "InsertionSort Average Running Time For RandomInput: " << tInsertionRT/50 << " ms" << "\t\tSteps: " << iNumSteps/50 << endl;
-        outFile << "MergeSort Average Running Time For RandomInput: " << tMergeRT/50 << " ms" << "\t\tSteps: " << mNumSteps/50 << endl;
+        outFile << setw(50) << left << "InsertionSort for 50 instances of RandomInput:" << setw(18) << left << "Running Time(ms): " << setw(12) << tInsertionRT/50 << setw(7) << left << "Steps: " << setw(32) << iNumSteps/50 << endl;
+        outFile << setw(50) << left << "MergeSort for 50 instances of RandomInput:" << setw(18) << left << "Running Time(ms): " << setw(12) << tMergeRT / 50 << setw(7) << left << "Steps: " << setw(32) << mNumSteps / 50 << endl << endl;
     }
     
     system("pause");
