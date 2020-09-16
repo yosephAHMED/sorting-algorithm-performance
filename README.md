@@ -1,8 +1,9 @@
 # sorting-algorithm-performance
-Programming Assignment: You need to implement insertion sort and merge sort (increasing or decreasing order) algorithms and measure the performance of these two algorithms in terms of number of steps and CPU running time.
+## Programming Assignment: You need to implement insertion sort and merge sort (increasing or decreasing order) algorithms and measure the performance of these two algorithms in terms of number of steps and CPU running time.
+
 For each algorithm, and for each n = 100, 200, 300, 400, 500, 1000, 4000, 10000, measure its running time and number of steps when the input is (1) reversely sorted, i.e. n, n-1, …, 3, 2,1; (2) sorted 1, 2, 3, … n; (3) random permutation of 1, 2, …, n; (4) 50 instances of n random numbers generated in the range of [1..n].
 
-Note:
+## Note:
 
 (1) You may have to repeat the algorithm many times, each time you need to initialize the array.
 
@@ -30,5 +31,5 @@ What to turn in:
   <img src="https://gist.githubusercontent.com/yosephAHMED/a027ccf406a2a72c2e07672fb7a28a75/raw/d8df8aeb8229a9fd98df50d0348b74fcfb2162a2/Merge_Sort_Performance.svg">
 </a>
 
-Results
-https://raw.githubusercontent.com/yosephAHMED/sorting-algorithm-performance/master/sorting-algorithm-performance/results.txt
+## Results:
+### https://raw.githubusercontent.com/yosephAHMED/sorting-algorithm-performance/master/sorting-algorithm-performance/results.txt
