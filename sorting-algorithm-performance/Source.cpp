@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <vector>
 #include <chrono>
@@ -63,13 +64,28 @@ void merge(vector<int> &arr, int begin, int mid, int end)
     vector<int> leftArray(mid - begin + 1);
     vector<int> rightArray(end - mid);
 
+    // declaring vectors of particular size
+    numSteps += 2;
+
     // fill in left array
     for (int i = 0; i < leftArray.size(); ++i)
         leftArray[i] = arr[begin + i];
 
+    // initialization of i = 0
+    numSteps++;
+
+    // boolean comparison of i and then incrementing it
+    numSteps += 2;
+
     // fill in right array
     for (int i = 0; i < rightArray.size(); ++i)
         rightArray[i] = arr[mid + 1 + i];
+
+    // initialization of i = 0
+    numSteps++;
+
+    // boolean comparison of i and then incrementing it
+    numSteps += 2;
 
     /* Merge the temp arrays */
 
@@ -79,38 +95,75 @@ void merge(vector<int> &arr, int begin, int mid, int end)
     // the index we will start at when adding the subarrays back into the main array
     int currentIndex = begin;
 
+    // 3 assignments counts as 3 steps
+    numSteps += 3;
+
     // compare each index of the subarrays adding the lowest value to the currentIndex
-    while (leftIndex < leftArray.size() && rightIndex < rightArray.size()) {
+    while (leftIndex < leftArray.size() && rightIndex < rightArray.size()) 
+    {
+        // 3 boolean comparisons in while loop counts as 3 steps
+        numSteps += 3;
+
         if (leftArray[leftIndex] <= rightArray[rightIndex]) {
             arr[currentIndex] = leftArray[leftIndex];
             leftIndex++;
-        }
-        else {
+
+            // boolean comparison and 2 assignments
+            numSteps += 3;
+        } else {
             arr[currentIndex] = rightArray[rightIndex];
             rightIndex++;
+
+            // 2 assignments
+            numSteps += 2;
         }
         currentIndex++;
+
+        // 1 assignment
+        numSteps++;
     }
 
     // copy remaining elements of leftArray[] if any
-    while (leftIndex < leftArray.size()) arr[currentIndex++] = leftArray[leftIndex++];
+    while (leftIndex < leftArray.size()) 
+    {
+        arr[currentIndex++] = leftArray[leftIndex++];
+
+        // boolean comparison and assignment
+        numSteps += 2;
+    }
 
     // copy remaining elements of rightArray[] if any
-    while (rightIndex < rightArray.size()) arr[currentIndex++] = rightArray[rightIndex++];
+    while (rightIndex < rightArray.size()) 
+    {
+        arr[currentIndex++] = rightArray[rightIndex++];
+
+        // boolean comparison and assignment
+        numSteps += 2;
+    }
 }
 
 void mergeSort(vector<int> &arr, int begin, int end)
 {
     // base case
-    if (begin < end) {
+    if (begin < end) 
+    {
+        // boolean comparison counts as 1 step
+        numSteps++;
+
         // find the middle point
         int mid = (begin + end) / 2;
+
+        // assignment counts as 1 step
+        numSteps++;
 
         mergeSort(arr, begin, mid); // sort first half
         mergeSort(arr, mid + 1, end);  // sort second half
 
         // merge the sorted halves
         merge(arr, begin, mid, end);
+
+        // function call counts as 1 step each
+        numSteps += 3;
     }
 }
 
@@ -226,18 +279,24 @@ int main()
         insertionSort(vecArr);
         t2 = high_resolution_clock::now();
         runningTime = t2 - t1;
-        outFile << "InsertionSort Running Time For SortedInput: " << runningTime.count() << endl;
+        outFile << "InsertionSort Running Time For SortedInput: " << runningTime.count() << " ms" << "\t\tSteps: " << numSteps << endl;
 
         // clear vector and initialize
         vecArr.clear();
         generateSortedInput(vecArr, inputArr[i]);
+
+        // reset numSteps counter to 0
+        numSteps = 0;
 
         // run merge sort on vecArr and obtain running time
         t1 = high_resolution_clock::now();
         mergeSort(vecArr, 0, static_cast<int>(vecArr.size() - 1));
         t2 = high_resolution_clock::now();
         runningTime = t2 - t1;
-        outFile << "MergeSort Running Time For SortedInput: " << runningTime.count() << endl;
+        outFile << "MergeSort Running Time For SortedInput: " << runningTime.count() << " ms" << "\t\tSteps: " << numSteps << endl;
+
+        // reset numSteps counter to 0
+        numSteps = 0;
 
         // --------------------------------------
         // #INPUT #2: 1, 2, 3, ..n
@@ -249,18 +308,24 @@ int main()
         insertionSort(vecArr);
         t2 = high_resolution_clock::now();
         runningTime = t2 - t1;
-        outFile << "InsertionSort Running Time For ReverselySortedInput: " << runningTime.count() << endl;
+        outFile << "InsertionSort Running Time For ReverselySortedInput: " << runningTime.count() << " ms" << "\t\tSteps: " << numSteps << endl;
 
         // clear vector and initialize
         vecArr.clear();
         generateSortedInput(vecArr, inputArr[i]);
+
+        // reset numSteps counter to 0
+        numSteps = 0;
 
         // run merge sort on vecArr and obtain running time
         t1 = high_resolution_clock::now();
         mergeSort(vecArr, 0, static_cast<int>(vecArr.size() - 1));
         t2 = high_resolution_clock::now();
         runningTime = t2 - t1;
-        outFile << "MergeSort Running Time For ReverselySortedInput: " << runningTime.count() << endl;
+        outFile << "MergeSort Running Time For ReverselySortedInput: " << runningTime.count() << " ms" << "\t\tSteps: " << numSteps << endl;
+
+        // reset numSteps counter to 0
+        numSteps = 0;
 
         // --------------------------------------
         // #INPUT #3: 1, ..., ?, n (no duplicates)
@@ -272,18 +337,24 @@ int main()
         insertionSort(vecArr);
         t2 = high_resolution_clock::now();
         runningTime = t2 - t1;
-        outFile << "InsertionSort Running Time For RandomPermutation: " << runningTime.count() << endl;
+        outFile << "InsertionSort Running Time For RandomPermutation: " << runningTime.count() << " ms" << "\t\tSteps: " << numSteps <<  endl;
 
         // clear vector and initialize
         vecArr.clear();
         generateRandomPermutation(vecArr, inputArr[i]);
+
+        // reset numSteps counter to 0
+        numSteps = 0;
 
         // run merge sort on vecArr and obtain running time
         t1 = high_resolution_clock::now();
         mergeSort(vecArr, 0, static_cast<int>(vecArr.size() - 1));
         t2 = high_resolution_clock::now();
         runningTime = t2 - t1;
-        outFile << "MergeSort Running Time For RandomPermutation: " << runningTime.count() << endl;
+        outFile << "MergeSort Running Time For RandomPermutation: " << runningTime.count() << " ms" << "\t\tSteps: " << numSteps << endl;
+
+        // reset numSteps counter to 0
+        numSteps = 0;
 
         // --------------------------------------
         // 50 instances of n random numbers generated in the range of [1..n]
@@ -291,8 +362,12 @@ int main()
         // #INPUT #4: ?, ..., ?, n (duplicates ok)
         // tInsertionRT - total insertion sort running time
         // tMergeRT - total merge sort running time
+
         double tInsertionRT = 0;
         double tMergeRT = 0;
+        long long int iNumSteps = 0;
+        long long int mNumSteps = 0;
+
         for (int j = 0; j < 50; j++)
         {
             vecArr.clear();
@@ -305,6 +380,11 @@ int main()
             runningTime = t2 - t1;
             tInsertionRT = tInsertionRT + runningTime.count();
 
+            iNumSteps += numSteps;
+
+            // reset numSteps counter to 0
+            numSteps = 0;
+
             // clear vector and initialize
             vecArr.clear();
             generateRandomInput(vecArr, inputArr[i]);
@@ -315,9 +395,15 @@ int main()
             t2 = high_resolution_clock::now();
             runningTime = t2 - t1;
             tMergeRT = tMergeRT + runningTime.count();
+
+            mNumSteps += numSteps;
+
+            // reset numSteps counter to 0
+            numSteps = 0;
         }
-        outFile << "InsertionSort Average Running Time For RandomInput: " << tInsertionRT/50 << endl;
-        outFile << "MergeSort Average Running Time For RandomInput: " << tMergeRT/50 << endl;
+
+        outFile << "InsertionSort Average Running Time For RandomInput: " << tInsertionRT/50 << " ms" << "\t\tSteps: " << iNumSteps/50 << endl;
+        outFile << "MergeSort Average Running Time For RandomInput: " << tMergeRT/50 << " ms" << "\t\tSteps: " << mNumSteps/50 << endl;
     }
     
     system("pause");
