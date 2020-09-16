@@ -34,7 +34,7 @@ What to turn in:
 ## Raw Results:
 ### https://raw.githubusercontent.com/yosephAHMED/sorting-algorithm-performance/master/sorting-algorithm-performance/results.txt
 
-## Conclusion:
+## Analysis:
 <a href="https://gist.githubusercontent.com/yosephAHMED/57e21327b739594cc26b36dc77a39d89/raw/3853f43d1d0763bb953ee860c7ac1af750771015/Insertion_Sort_C_Approximation.svg">
   <img src="https://gist.githubusercontent.com/yosephAHMED/57e21327b739594cc26b36dc77a39d89/raw/3853f43d1d0763bb953ee860c7ac1af750771015/Insertion_Sort_C_Approximation.svg">
 </a>
@@ -71,3 +71,5 @@ What to turn in:
 | --- | --- | --- | --- | --- |
 | **Average** | 8.261185 | 8.261185 | 11.05925 | 11.066475 |
 
+## Conclusion:
+For sorted inputs, it appears that insertion sort is faster than merge sort across all input size (n). Furthermore, for smaller input size (n), it appears that insertion sort has a faster runtime performance, however when the input size (n) is large, merge sort is the superior sorting algorithm in runtime performance. This is clearly the case for input sizes of 1000 and onward.
