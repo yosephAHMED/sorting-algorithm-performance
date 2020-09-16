@@ -23,20 +23,18 @@ What to turn in:
 
 (4) Approximation the constant c in the complexity of insertion sort (cn^2), and merge sort (cnlgn) by inspecting the results
 
-<a href="https://gist.githubusercontent.com/yosephAHMED/1b64610bd5942dd886dced5bd19853a0/raw/8b7fa99ec8ff80e458ce7f77da55db0f12092a00/Insertion_Sort_Performance.svg">
-  <img src="https://gist.githubusercontent.com/yosephAHMED/1b64610bd5942dd886dced5bd19853a0/raw/8b7fa99ec8ff80e458ce7f77da55db0f12092a00/Insertion_Sort_Performance.svg">
-</a>
-
-<a href="https://gist.githubusercontent.com/yosephAHMED/a027ccf406a2a72c2e07672fb7a28a75/raw/d8df8aeb8229a9fd98df50d0348b74fcfb2162a2/Merge_Sort_Performance.svg">
-  <img src="https://gist.githubusercontent.com/yosephAHMED/a027ccf406a2a72c2e07672fb7a28a75/raw/d8df8aeb8229a9fd98df50d0348b74fcfb2162a2/Merge_Sort_Performance.svg">
-</a>
-
 ## Raw Results:
 ### https://raw.githubusercontent.com/yosephAHMED/sorting-algorithm-performance/master/sorting-algorithm-performance/results.txt
 
 ## Analysis:
-<a href="https://gist.githubusercontent.com/yosephAHMED/57e21327b739594cc26b36dc77a39d89/raw/3853f43d1d0763bb953ee860c7ac1af750771015/Insertion_Sort_C_Approximation.svg">
-  <img src="https://gist.githubusercontent.com/yosephAHMED/57e21327b739594cc26b36dc77a39d89/raw/3853f43d1d0763bb953ee860c7ac1af750771015/Insertion_Sort_C_Approximation.svg">
+### Insertion Sort Runtime Performance (ms)
+<a href="https://gist.githubusercontent.com/yosephAHMED/1b64610bd5942dd886dced5bd19853a0/raw/8b7fa99ec8ff80e458ce7f77da55db0f12092a00/Insertion_Sort_Performance.svg">
+  <img src="https://gist.githubusercontent.com/yosephAHMED/1b64610bd5942dd886dced5bd19853a0/raw/8b7fa99ec8ff80e458ce7f77da55db0f12092a00/Insertion_Sort_Performance.svg">
+</a>
+
+### Merge Sort Runtime Performance (ms)
+<a href="https://gist.githubusercontent.com/yosephAHMED/a027ccf406a2a72c2e07672fb7a28a75/raw/d8df8aeb8229a9fd98df50d0348b74fcfb2162a2/Merge_Sort_Performance.svg">
+  <img src="https://gist.githubusercontent.com/yosephAHMED/a027ccf406a2a72c2e07672fb7a28a75/raw/d8df8aeb8229a9fd98df50d0348b74fcfb2162a2/Merge_Sort_Performance.svg">
 </a>
 
 ### Average C approximations for Insertion Sort
@@ -53,8 +51,8 @@ What to turn in:
 | --- | --- | --- | --- | --- |
 | **Average** | 3.50598875 | 0.009031891875 | 1.6982575 | 1.75001125 |
 
-<a href="https://gist.githubusercontent.com/yosephAHMED/4241617bb803a9d3d39a6260b95b8558/raw/21a6b219a1b2ed4cca90af7816bb6cf3d3be6a6a/Merge_Sort_C_Approximation.svg">
-  <img src="https://gist.githubusercontent.com/yosephAHMED/4241617bb803a9d3d39a6260b95b8558/raw/21a6b219a1b2ed4cca90af7816bb6cf3d3be6a6a/Merge_Sort_C_Approximation.svg">
+<a href="https://gist.githubusercontent.com/yosephAHMED/57e21327b739594cc26b36dc77a39d89/raw/3853f43d1d0763bb953ee860c7ac1af750771015/Insertion_Sort_C_Approximation.svg">
+  <img src="https://gist.githubusercontent.com/yosephAHMED/57e21327b739594cc26b36dc77a39d89/raw/3853f43d1d0763bb953ee860c7ac1af750771015/Insertion_Sort_C_Approximation.svg">
 </a>
 
 ### Average C approximations for Merge Sort
@@ -70,6 +68,10 @@ What to turn in:
 | `10000` | 7.44433 | 7.44433 | 10.5372 | 10.5352 |
 | --- | --- | --- | --- | --- |
 | **Average** | 8.261185 | 8.261185 | 11.05925 | 11.066475 |
+
+<a href="https://gist.githubusercontent.com/yosephAHMED/4241617bb803a9d3d39a6260b95b8558/raw/21a6b219a1b2ed4cca90af7816bb6cf3d3be6a6a/Merge_Sort_C_Approximation.svg">
+  <img src="https://gist.githubusercontent.com/yosephAHMED/4241617bb803a9d3d39a6260b95b8558/raw/21a6b219a1b2ed4cca90af7816bb6cf3d3be6a6a/Merge_Sort_C_Approximation.svg">
+</a>
 
 ## Conclusion:
 For sorted inputs, it appears that insertion sort is faster than merge sort across all input size (n). Furthermore, for smaller input size (n), it appears that insertion sort has a faster runtime performance, however when the input size (n) is large, merge sort is the superior sorting algorithm in runtime performance. This is clearly the case for input sizes of 1000 and onward.
