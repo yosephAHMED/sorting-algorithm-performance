@@ -28,11 +28,33 @@ What to turn in:
 
 ## Analysis:
 ### Insertion Sort Runtime Performance (ms)
+| Input Size | Reversely Sorted | Sorted | Random Permutation | 50 Instances of Random Input |
+| --- | --- | --- | --- | --- |
+| `100` | 0.7132  | 0.0082 | 0.3781 | 0.404686 |
+| `200` | 3.3008 | 0.0159 | 1.4857 | 1.68341 |
+| `300` | 7.8188 | 0.0242 | 3.3098 | 3.52041 |
+| `400` | 13.1222 | 0.0326 | 6.5362 | 6.59068 |
+| `500` | 20.7776 | 0.0416 | 10.1424 | 10.0679 |
+| `1000` | 81.2341 | 0.1 | 40.4523 | 39.6384 |
+| `4000` | 1274.29 | 0.2517 | 610.513 | 601.964 |
+| `10000` | 7227.57 | 0.6715 | 3663.96 | 3714.2 |
+
 <a href="https://gist.githubusercontent.com/yosephAHMED/1b64610bd5942dd886dced5bd19853a0/raw/8b7fa99ec8ff80e458ce7f77da55db0f12092a00/Insertion_Sort_Performance.svg">
   <img src="https://gist.githubusercontent.com/yosephAHMED/1b64610bd5942dd886dced5bd19853a0/raw/8b7fa99ec8ff80e458ce7f77da55db0f12092a00/Insertion_Sort_Performance.svg">
 </a>
 
 ### Merge Sort Runtime Performance (ms)
+| Input Size | Reversely Sorted | Sorted | Random Permutation | 50 Instances of Random Input |
+| --- | --- | --- | --- | --- |
+| `100` | 0.661  | 0.6421 | 0.7005 | 0.729274 |
+| `200` | 1.4869 | 1.4915 | 1.5681 | 1.5668 |
+| `300` | 2.2633 | 2.2484 | 2.3738 | 2.22918 |
+| `400` | 2.9216 | 3.0404 | 3.2165 | 3.151 |
+| `500` | 3.8131 | 3.8029 | 3.977 | 3.90081 |
+| `1000` | 7.8411 | 7.6145 | 8.0108 | 7.94268 |
+| `4000` | 30.1174 | 23.7499 | 25.8347 | 31.1511 |
+| `10000` | 68.6914 | 71.6666 | 76.0117 | 81.1904 |
+
 <a href="https://gist.githubusercontent.com/yosephAHMED/a027ccf406a2a72c2e07672fb7a28a75/raw/d8df8aeb8229a9fd98df50d0348b74fcfb2162a2/Merge_Sort_Performance.svg">
   <img src="https://gist.githubusercontent.com/yosephAHMED/a027ccf406a2a72c2e07672fb7a28a75/raw/d8df8aeb8229a9fd98df50d0348b74fcfb2162a2/Merge_Sort_Performance.svg">
 </a>
